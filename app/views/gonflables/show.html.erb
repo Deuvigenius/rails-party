@@ -1,0 +1,14 @@
+<div class="container-sm mt-5">
+
+  <h1 class="text-primary"><strong>Inflatables games</strong></h1>
+
+  <p class="text-danger">
+    <%= @gonflable.name %>
+    <%= @gonflable.image_url %>
+    <%= @gonflable.content %>
+    <%= @gonflable.rating %>
+    <%= @gonflable.price %>
+  </p>
+
+  <%= link_to "Louer", user_profile_path, class: "btn btn-primary" %>
+</div>
