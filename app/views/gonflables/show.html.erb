@@ -2,13 +2,14 @@
 
   <h1 class="text-primary"><strong>Inflatables games</strong></h1>
 
-  <p class="text-danger">
-    <%= @gonflable.name %>
-    <%= @gonflable.image_url %>
-    <%= @gonflable.content %>
-    <%= @gonflable.rating %>
-    <%= @gonflable.price %>
-  </p>
+    <p><%= @gonflable.name %></p>
+    <hr>
+    <%# <%= image_tag(@gonflable.image_url, size: '200x200') %> %>
+    <hr>
+    <p><%= @gonflable.content %></p>
+    <p><%= @gonflable.rating %></p>
+    <p> <%= @gonflable.price %></p>
 
-  <%= link_to "Louer", user_profile_path, class: "btn btn-primary" %>
+
+
 </div>
