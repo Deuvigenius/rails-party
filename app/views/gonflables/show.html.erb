@@ -10,5 +10,7 @@
     <%= @gonflable.price %>
   </p>
 
-  <%= link_to "Louer", user_profile_path, class: "btn btn-primary" %>
+
+  <%= link_to "Réserve", gonflable_rents_path(@gonflable, @rent), data: {turbo_method: :post} %>
+
 </div>
