@@ -19,7 +19,7 @@ class GonflablesController < ApplicationController
     @gonflable = Gonflable.new(gonflable_params)
 
     if @gonflable.save
-      redirect_to @gonflable, notice: "Gonflable was successfully created."
+      redirect_to @gonflable, notice: "Inflatable games was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class GonflablesController < ApplicationController
 
   def update
     if @gonflable.update(gonflable_params)
-      redirect_to @gonflable, notice: "Gonflable was successfully updated."
+      redirect_to @gonflable, notice: "Inflatable games was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class GonflablesController < ApplicationController
 
   def destroy
     @gonflable.destroy
-    redirect_to @gonflabe, notice: "Gonflable was successfully destroyed."
+    redirect_to @gonflabe, notice: "Inflatable games was successfully destroyed."
   end
 
   private
