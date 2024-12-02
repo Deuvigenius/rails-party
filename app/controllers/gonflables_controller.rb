@@ -1,0 +1,2 @@
+class GonflablesController < ApplicationController
+end
