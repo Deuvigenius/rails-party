@@ -16,6 +16,9 @@
             </h2>
             <p><%= gonflable.content%></p>
             <p>Prix : <%= gonflable.price %>€</p>
+           <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
+            <button>Supprimer</button>
+           <% end %>
           </div>
         </div>
       <% end %>
@@ -41,9 +44,11 @@
               <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
               <p> Date Début: <%= rent.date_debut %></p>
               <p> Date Fin: <%= rent.date_fin %></p>
+            <%= link_to rent_path(rent), data: {turbo_method: :delete} do %>
+              <button>Supprimer</button>
+            <% end %>
             </div>
           </div>
         <% end %>
     </ul>
 </div>
-

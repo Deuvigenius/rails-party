@@ -11,4 +11,10 @@ class RentsController < ApplicationController
       render :new, alert: "Erreur, impossible d'ajouter le gonflable à mes reservations, Réessayez !"
     end
   end
+
+  def destroy
+    @rent = Rent.find(params[:id])
+    @rent.destroy
+    redirect_to gonflables_path, notice: "Resrvation was successfully destroyed."
+  end
 end
