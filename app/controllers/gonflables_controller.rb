@@ -6,6 +6,7 @@ class GonflablesController < ApplicationController
   end
 
   def show
+    @rent = Rent.new
   end
 
   def new
