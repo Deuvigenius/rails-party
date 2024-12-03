@@ -11,5 +11,4 @@ class RentsController < ApplicationController
       render :new, alert: "Erreur, impossible d'ajouter le gonflable à mes reservations, Réessayez !"
     end
   end
-
 end

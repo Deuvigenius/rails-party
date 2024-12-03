@@ -2,6 +2,22 @@
 <p>Email : <%= @user.email %></p>
 
 <h2>Vos gonflables</h2>
-<%  %>
+
 
 <h2>Vos réservations</h2>
+<div class="container">
+  <ul class="list-group">
+    <% if @user.gonflables.present? %>
+      <% @user.gonflables.each do |gonflable| %>
+      <% rent = Rent.find_by(gonflable: @gonflable, user: @user) %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2><strong><%= link_to "gonflable.name", gonflable_path(gonflable) %></strong></h2>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <li class="list-group-item">No gonflables in this list yet.</li>
+    <% end %>
+  </ul>
+</div>
