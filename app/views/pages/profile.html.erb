@@ -1,7 +1,34 @@
 <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
 <p>Email : <%= @user.email %></p>
 
+
+<h2>Mes gonflables en location</h2>
+<div class="container">
+  <ul class="list-group">
+    <% if @gonflables.any? %>
+      <% @gonflables.each do |gonflable| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              <strong>
+                <%= link_to gonflable.name, gonflable_path(gonflable) %>
+              </strong>
+            </h2>
+            <p><%= gonflable.content%></p>
+            <p>Prix : <%= gonflable.price %>€</p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
+    <% end %>
+  <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+  </ul>
+</div>
+
+
 <h2>Mes gonflables</h2>
+
 
 <div class="container">
   <h2 class="my-4">Mes Réservations</h2>
@@ -34,6 +61,12 @@
           </td>
         </tr>
       <% end %>
+    <% else %>
+      <li class="list-group-item">No gonflables in this list yet.</li>
+    <% end %>
+  </ul>
+</div>
     </tbody>
   </table>
 </div>
+
