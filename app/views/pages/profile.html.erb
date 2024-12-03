@@ -1,5 +1,32 @@
 <div class="container">
 
+  <ul class="list-group">
+    <% if @gonflables.any? %>
+      <% @gonflables.each do |gonflable| %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              <strong>
+                <%= link_to gonflable.name, gonflable_path(gonflable) %>
+              </strong>
+            </h2>
+            <p><%= gonflable.content%></p>
+            <p>Prix : <%= gonflable.price %>€</p>
+           <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
+            <button>Supprimer</button>
+           <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
+    <% end %>
+  <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+  </ul>
+</div>
+
+
+
   <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
 
 
@@ -11,6 +38,15 @@
         <% @gonflables.each do |gonflable| %>
           <div class="card-product">
             <div class="card-product-infos">
+
+                <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
+              <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
+              <p> Date Début: <%= rent.date_debut %></p>
+              <p> Date Fin: <%= rent.date_fin %></p>
+            <%= link_to rent_path(rent), data: {turbo_method: :delete} do %>
+              <button>Supprimer</button>
+            <% end %>
+
               <h2>
                 <strong>
                   <%= link_to gonflable.name, gonflable_path(gonflable) %>
@@ -18,6 +54,7 @@
               </h2>
               <p><%= gonflable.content%></p>
               <p>Prix : <%= gonflable.price %>€</p>
+
             </div>
           </div>
         <% end %>
@@ -26,6 +63,8 @@
       <% end %>
     <%= link_to "Ajouter un gonflable", new_gonflable_path %>
     </ul>
+
+
   </div>
 
   <h2 class="my-4">Mes Réservations</h2>
@@ -59,4 +98,5 @@
   </div>
 <% end %>
   </ul>
+
 </div>

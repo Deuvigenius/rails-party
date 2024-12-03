@@ -14,6 +14,14 @@ class RentsController < ApplicationController
     end
   end
 
+
+  def destroy
+    @rent = Rent.find(params[:id])
+    @rent.destroy
+    redirect_to gonflables_path, notice: "Resrvation was successfully destroyed."
+  end
+end
+
   def accept
     @rent.update(statut: "Accepté")
     redirect_to user_profile_path, notice: "La réservation a été acceptée."
@@ -35,3 +43,4 @@ class RentsController < ApplicationController
   end
 
 end
+
