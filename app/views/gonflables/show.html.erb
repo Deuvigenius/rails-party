@@ -1,17 +1,28 @@
-<div class="container-sm mt-5">
+<div class="container-sm mt-5 ">
 
   <h1 class="text-primary"><strong>Inflatables games</strong></h1>
 
-    <p><%= @gonflable.name %></p>
+    <p><strong><%= @gonflable.name %></strong></p>
     <hr>
-    <%# <%= image_tag(@gonflable.image_url, size: '200x200') %> %>
+  <div class="d-flex p-3 align-items-center">
+      <div class="img_gonflable flex-shrink-0">
+          <% if @gonflable.photo.attached? %>
+            <%= cl_image_tag @gonflable.photo.key, height: 300, width: 300, crop: :fill %>
+          <% else %>
+            <img src="https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948" width="250" height="250"alt="Gonflable pleins de couleurs">
+          <% end %>
+      </div>
+      <div class="info_gonflable flex-grow-1 ms-5">
+          <p><strong><%= @gonflable.content %></strong></p>
+          <p><strong><%= @gonflable.rating %>/10</strong></p>
+          <p><strong><%= @gonflable.price %></strong></p>
+
+      <%= link_to gonflable_rents_path(@gonflable, @rent), data: {turbo_method: :post} do %>
+        <button class="btn btn-primary">Réservez</button>
+      <% end %>
+
+      </div>
+    </div>
     <hr>
-    <p><%= @gonflable.content %></p>
-    <p><%= @gonflable.rating %></p>
-    <p> <%= @gonflable.price %></p>
-
-
-  <%= link_to "Réserve", gonflable_rents_path(@gonflable, @rent), data: {turbo_method: :post} %>
-
 
 </div>
