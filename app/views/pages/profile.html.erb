@@ -1,23 +1,31 @@
 <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
 <p>Email : <%= @user.email %></p>
 
-<h2>Vos gonflables</h2>
+<h2>Mes gonflables</h2>
 
-
-<h2>Vos réservations</h2>
 <div class="container">
-  <ul class="list-group">
+<h2>Vos réservations</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Gonflable</th>
+      <th scope="col">Statut</th>
+    </tr>
+  </thead>
+  <tbody>
     <% if @user.gonflables.present? %>
       <% @user.gonflables.each do |gonflable| %>
       <% rent = Rent.find_by(gonflable: @gonflable, user: @user) %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h2><strong><%= link_to "gonflable.name", gonflable_path(gonflable) %></strong></h2>
-          </div>
-        </div>
+      <tr>
+        <th scope="row">1</th>   
+        <td><strong><%= link_to "gonflable.name", gonflable_path(gonflable) %></strong></td>
+        <td>statut</td>
       <% end %>
     <% else %>
-      <li class="list-group-item">No gonflables in this list yet.</li>
+      <li class="list-group-item">Vous n'avez effectué aucune reservations.</li>
     <% end %>
-  </ul>
+    </tr>
+  </tbody>
+  </table>
 </div>
