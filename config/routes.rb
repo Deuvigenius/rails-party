@@ -17,5 +17,16 @@ Rails.application.routes.draw do
   resources :gonflables do
     resources :rents, only: [:create]
   end
+
   resources :rents, only: [:destroy]
+
+
+  resources :rents do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
+
+
 end
