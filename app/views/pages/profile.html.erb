@@ -14,7 +14,22 @@
                 <%= link_to gonflable.name, gonflable_path(gonflable) %>
               </strong>
             </h2>
-            <p><%= gonflable.content%></p>
+
+
+              <div class="conatainer-card">
+                <% if gonflable.photo.attached? %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
+                    <%= link_to edit_gonflable_path(gonflable) do %>
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
+                  </div>
+                <% end %></p>
+              </div>
+
+
             <p>Prix : <%= gonflable.price %>€</p>
           </div>
         </div>
@@ -23,6 +38,7 @@
       <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
     <% end %>
   <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+
   </ul>
 </div>
 
@@ -61,12 +77,9 @@
           </td>
         </tr>
       <% end %>
-    <% else %>
-      <li class="list-group-item">No gonflables in this list yet.</li>
-    <% end %>
+
   </ul>
 </div>
     </tbody>
   </table>
 </div>
-
