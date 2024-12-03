@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :rents, dependent: :destroy
-  has_many :gonflables, dependent: :destroy
+  has_many :gonflables, through: :rents
 end
