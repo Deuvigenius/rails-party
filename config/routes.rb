@@ -18,4 +18,11 @@ Rails.application.routes.draw do
     resources :rents, only: [:create]
   end
 
+  resources :rents do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
+
 end
