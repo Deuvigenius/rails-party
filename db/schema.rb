@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_03_102548) do
+
+
+
+ActiveRecord::Schema[7.2].define(version: 2024_12_03_113203) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,11 +59,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_03_102548) do
   end
 
   create_table "rents", force: :cascade do |t|
-    t.string "statut"
+    t.string "statut", default: "En attente"
     t.bigint "user_id", null: false
     t.bigint "gonflable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "Date_depart"
+    t.string "Date_fin"
     t.index ["gonflable_id"], name: "index_rents_on_gonflable_id"
     t.index ["user_id"], name: "index_rents_on_user_id"
   end
