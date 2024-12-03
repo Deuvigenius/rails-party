@@ -18,7 +18,7 @@ class GonflablesController < ApplicationController
 
   def create
     @gonflable = Gonflable.new(gonflable_params)
-
+    @gonflable.user = current_user
     if @gonflable.save
       redirect_to @gonflable, notice: "Inflatable games was successfully created."
     else
@@ -36,7 +36,7 @@ class GonflablesController < ApplicationController
 
   def destroy
     @gonflable.destroy
-    redirect_to @gonflabe, notice: "Inflatable games was successfully destroyed."
+    redirect_to @gonflable, notice: "Inflatable games was successfully destroyed."
   end
 
   private
@@ -44,6 +44,7 @@ class GonflablesController < ApplicationController
   def set_gonflable
     @gonflable = Gonflable.find(params[:id])
   end
+
 
   def gonflabe_params
     params.require(:gonflable).permit(:name, :price, :content, :image_url, :rating, :photo)
