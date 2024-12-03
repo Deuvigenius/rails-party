@@ -33,17 +33,18 @@
 <div class="container">
   <h2 class="my-4">Mes Réservations</h2>
     <ul class="list-group">
-
-        <% current_user.rents.each do |rent| %>
+      <% if @gonflables.present? %>
+        <% @gonflables.each_with_index do |gonflable| %>
+        <% rent = @rents.find_by(user: @user, gonflable: gonflable) %>
           <div class="card-product">
             <div class="card-product-infos">
-                <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
+              <li><strong><%= link_to gonflable.name, gonflable_path(gonflable) %></strong></li>
               <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-              <p> Date Début: <%= rent.date_debut %></p>
-              <p> Date Fin: <%= rent.date_fin %></p>
             </div>
           </div>
         <% end %>
+      <% else %>
+        <li> Vous n'avez effectué aucune réservation.</li>
+      <% end %>
     </ul>
 </div>
-
