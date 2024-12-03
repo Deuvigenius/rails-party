@@ -3,13 +3,19 @@
 <div class="container-sm mt-5">
 <h1 class="text-primary"><strong>Inflatable games</strong></h1>
 
-<% @gonflables.each do |gonflable| %>
-
-<ul>
-<li ><%= link_to gonflable.name, gonflable_path(gonflable), class: "link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"%></li>
-</ul>
-
-<% end %>
+<div class="card-category">
+  <% @gonflables.each do |gonflable| %>
+    <% if gonflable.photo.attached? %>
+      <div class="card" style="background-image: url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
+        <%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %>  
+      </div>
+    <% else %>
+      <div class="card" style="background-image: url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
+        <%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %>  
+      </div>
+    <% end %>
+  <% end %>
+  </div>
 
 
 </div>
