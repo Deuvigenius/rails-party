@@ -34,9 +34,14 @@
       <% else %>
         <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
       <% end %>
-      <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+      <div data-controller="toggle" class="mt-5">
+        <button data-action="click->toggle#fire" class="btn btn-outline-primary">Ajouter un gonflable</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+          <%= render "form", gonflable: @gonflable %>
+          </div>
+      </div>
     </ul>
- 
+
 
   <h2 class="my-4">Mes Réservations</h2>
     <ul class="list-group">
@@ -60,6 +65,7 @@
     </ul>
 
   <h2 class="my-4">Mes Demandes de Réservations</h2>
+
     <ul class="list-group">
       <% if @requests.any? %>
         <% @requests.each do |rent| %>
@@ -83,4 +89,3 @@
       <% end %>
     </ul>
 </div>
-
