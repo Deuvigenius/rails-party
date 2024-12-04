@@ -21,13 +21,15 @@ class RentsController < ApplicationController
   end
 
   def accept
+    @rent = Rent.find(params[:id])
     @rent.update(statut: "Accepté")
-    redirect_to user_profile_path, notice: "La réservation a été acceptée."
-   end
+    redirect_to user_profile_path, notice: "Réservation acceptée."
+  end
 
   def reject
+    @rent = Rent.find(params[:id])
     @rent.update(statut: "Rejeté")
-    redirect_to user_profile_path, notice: "La réservation a été rejeté."
+    redirect_to user_profile_path, alert: "Réservation rejetée."
   end
 
   private

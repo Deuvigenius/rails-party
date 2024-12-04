@@ -42,6 +42,7 @@ gem "sassc-rails"
 gem "faker"
 gem "cloudinary"
 gem "devise"
+gem 'kaminari'
 
 group :development, :test do
   gem "dotenv-rails"
