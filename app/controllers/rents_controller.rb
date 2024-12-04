@@ -1,6 +1,6 @@
 class RentsController < ApplicationController
   before_action :set_rent, only: [:accept, :reject]
-  
+
   def create
     @rent = Rent.new(rent_params)
     @gonflable = Gonflable.find(params[:gonflable_id])
@@ -14,13 +14,11 @@ class RentsController < ApplicationController
     end
   end
 
-
   def destroy
     @rent = Rent.find(params[:id])
     @rent.destroy
-    redirect_to gonflables_path, notice: "Resrvation was successfully destroyed."
+    redirect_to user_profile_path, notice: "Reservation was successfully destroyed."
   end
-end
 
   def accept
     @rent.update(statut: "Accepté")
@@ -43,4 +41,3 @@ end
   end
 
 end
-

@@ -46,7 +46,6 @@ class GonflablesController < ApplicationController
     @gonflable = Gonflable.find(params[:id])
   end
 
-
   def gonflable_params
     params.require(:gonflable).permit(:name, :price, :content, :image_url, :rating, :photo)
   end
