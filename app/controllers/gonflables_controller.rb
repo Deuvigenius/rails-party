@@ -2,8 +2,7 @@ class GonflablesController < ApplicationController
   before_action :set_gonflable, only: %i[ show edit update destroy ]
 
   def index
-    @gonflables = Gonflable.all
-    # @gonflables = Gonflable.order(created_at: :desc).page(params[:page])
+    @gonflables = Gonflable.order(:name).page(params[:page])
   end
 
   def show

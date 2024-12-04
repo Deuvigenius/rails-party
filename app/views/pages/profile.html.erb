@@ -2,84 +2,46 @@
   
   <p><%= @user.avatar %></p>
   <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
-  
-  <ul class="list-group">
-    <% if @gonflables.any? %>
-      <% @gonflables.each do |gonflable| %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h2>
-              <strong>
-                <%= link_to gonflable.name, gonflable_path(gonflable) %>
-              </strong>
-            </h2>
+</div>
 
-
-              <div class="container-card">
-                <% if gonflable.photo.attached? %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
-                    <%= link_to edit_gonflable_path(gonflable) do %>
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
-                    <%= link_to edit_gonflable_path(gonflable) do %>
-                        <i class="fa-regular fa-pen-to-square"></i>
-                    <% end %>
-                  </div>
-                <% end %></p>
-              </div>
-
-
-            <p>Prix : <%= gonflable.price %>€</p>
-           <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
-            <button>Supprimer</button>
-           <% end %>
-          </div>
-        </div>
+<div class="container"> 
+  <h2>Mes gonflables en location</h2>
+    <ul class="list-group">
+      <% if @gonflables.present? %>
+        <% @gonflables.each do |gonflable| %>
+          <div class="card-product">
+            <div class="card-product-infos">
+              <h2>
+                <strong>
+                  <%= link_to gonflable.name, gonflable_path(gonflable) %>
+                </strong>
+              </h2>
+                <div class="container-card">
+                  <% if gonflable.photo.attached? %>
+                    <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
+                      <%= link_to edit_gonflable_path(gonflable) do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
+                      <%= link_to edit_gonflable_path(gonflable) do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                      <% end %>
+                    </div>
+                  <% end %></p>
+                </div>
+              <p>Prix : <%= gonflable.price %>€</p>
+            <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
+              <button>Supprimer</button>
+            <% end %>
+            </div>
       <% end %>
     <% else %>
       <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
     <% end %>
   <%= link_to "Ajouter un gonflable", new_gonflable_path %>
-
   </ul>
-</div>
-
-
-  <h2 class="my-4">Mes Réservations</h2>
-    <ul class="list-group">
-      <% current_user.rents.each do |rent| %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
-            <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-            <p> Date Début: <%= rent.date_debut %></p>
-            <p> Date Fin: <%= rent.date_fin %></p>
-          </div>
-        </div>
-      <% end %>
-    </ul>
-
-  <h2 class="my-4">Mes demandes de réservations</h2>
-  <ul class="list-group">
-    <% current_user.rents.each do |rent| %>
-  <div class="card-product">
-    <div class="card-product-infos">
-      <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
-      <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-      <p> Date Début: <%= rent.date_debut || "Non définie" %></p>
-      <p> Date Fin: <%= rent.date_fin || "Non définie" %></p>
-      <% if rent.statut == "En attente" %>
-        <%= button_to "Accepter", accept_rent_path(rent), method: :patch, class: "btn btn-success btn-sm" %>
-        <%= button_to "Rejeter", reject_rent_path(rent), method: :patch, class: "btn btn-danger btn-sm" %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-  </ul>
-
 </div>
       <div data-controller="toggle" class="mt-5">
         <button data-action="click->toggle#fire" class="btn btn-outline-primary">Ajouter un gonflable</button>
@@ -160,3 +122,4 @@
         <% end %>
       </tbody> 
     </table>
+</div>

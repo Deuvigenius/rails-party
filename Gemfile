@@ -45,6 +45,7 @@ gem "faker"
 gem "cloudinary"
 gem "devise"
 gem 'kaminari'
+gem 'kaminari-activerecord'
 
 group :development, :test do
   gem "dotenv-rails"
