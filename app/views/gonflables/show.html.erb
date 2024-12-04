@@ -16,13 +16,24 @@
           <p><strong><%= @gonflable.content %></strong></p>
           <p><strong><%= @gonflable.rating %>/10</strong></p>
           <p><strong><%= @gonflable.price %></strong></p>
-
-      <%= link_to gonflable_rents_path(@gonflable, @rent), data: {turbo_method: :post} do %>
-        <button class="btn btn-primary">Réservez</button>
-      <% end %>
-
       </div>
     </div>
-    <hr>
+  <hr>
+  <div>
+      <%= simple_form_for [@gonflable, @rent] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
+        <div class="form-inputs">
+          <%= f.label :date_debut, "Date de début" %>
+          <%= f.date_field :date_debut, class: "form-control" %>
+          <%= f.label :date_fin, "Date de fin" %>
+          <%= f.date_field :date_fin, class: "form-control" %>
+        </div>
+
+        <%= f.button :submit %>
+        
+      <% end %>
+  </div>
+    <%= link_to "Retour aux gonflables", gonflables_path(@gonflables) %>
 </div>

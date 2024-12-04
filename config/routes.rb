@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/profile", to: "pages#profile", as: "user_profile"
-  
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,5 +17,16 @@ Rails.application.routes.draw do
   resources :gonflables do
     resources :rents, only: [:create]
   end
+
+  resources :rents, only: [:destroy]
+
+
+  resources :rents do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
+
 
 end

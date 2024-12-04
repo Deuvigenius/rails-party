@@ -5,10 +5,8 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
-
     @gonflables = current_user.gonflables
-    @pending_rents = Rent.where(user: @user, statut: "")
-    @accepted_rents = Rent.where(user: @user, statut: "Accepté")
-    @rejected_rents = Rent.where(user: @user, statut: "Rejeté")
+    @rents = Rent.where(user: @user)
+    @gonflables = @user.gonflables
   end
 end
