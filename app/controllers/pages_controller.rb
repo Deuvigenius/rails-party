@@ -5,9 +5,13 @@ class PagesController < ApplicationController
 
   def profile
     @user = current_user
-    @gonflables = current_user.gonflables
-    @rents = Rent.where(user: @user)
-    @gonflables = @user.gonflables
+    @gonflables = current_user.gonflable
     @gonflable = Gonflable.new
+
+    # Mes réservations : Gonflables réservés par l'utilisateur
+    @my_rents = @user.rents.includes(:gonflable)
+
+    # Mes demandes de réservations : Réservations des gonflables appartenant à l'utilisateur
+    @requests = Rent.joins(:gonflable).where(gonflables: { user_id: @user.id }).includes(:user, :gonflable
   end
 end

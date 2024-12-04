@@ -3,7 +3,7 @@
 
   <h2>Mes gonflables en location</h2>
     <ul class="list-group">
-      <% if @gonflables.any? %>
+      <% if @gonflables.present? %>
         <% @gonflables.each do |gonflable| %>
           <div class="card-product">
             <div class="card-product-infos">
@@ -45,37 +45,47 @@
 
   <h2 class="my-4">Mes Réservations</h2>
     <ul class="list-group">
-      <% current_user.rents.each do |rent| %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
-            <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-            <p> Date Début: <%= rent.date_debut %></p>
-            <p> Date Fin: <%= rent.date_fin %></p>
-            <%= link_to rent_path(rent), data: {turbo_method: :delete} do %>
-              <button>Supprimer</button>
-            <% end %>
-
+      <% if @my_rents.any? %>
+        <% @my_rents.each do |rent| %>
+          <div class="card-product">
+            <div class="card-product-infos">
+              <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
+              <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
+              <p>Date Début : <%= rent.date_debut || "Non définie" %></p>
+              <p>Date Fin : <%= rent.date_fin || "Non définie" %></p>
+              <%= link_to rent_path(rent), data: { turbo_method: :delete }, method: :delete, class: "btn btn-danger" do %>
+                Supprimer
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>Aucune réservation pour le moment.</p>
       <% end %>
     </ul>
 
-  <h2 class="my-4">Mes demandes de réservations</h2>
+  <h2 class="my-4">Mes Demandes de Réservations</h2>
+
     <ul class="list-group">
-      <% current_user.rents.each do |rent| %>
-      <div class="card-product">
-        <div class="card-product-infos">
-          <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
-          <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-          <p> Date Début: <%= rent.date_debut || "Non définie" %></p>
-          <p> Date Fin: <%= rent.date_fin || "Non définie" %></p>
-          <% if rent.statut == "En attente" %>
-            <%= button_to "Accepter", accept_rent_path(rent), method: :patch, class: "btn btn-success btn-sm" %>
-            <%= button_to "Rejeter", reject_rent_path(rent), method: :patch, class: "btn btn-danger btn-sm" %>
-          <% end %>
-        </div>
-      </div>
+      <% if @requests.any? %>
+        <% @requests.each do |rent| %>
+          <div class="card-product">
+            <div class="card-product-infos">
+              <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
+              <p>Réservé par : <%= rent.user.first_name %> <%= rent.user.last_name %></p>
+              <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
+              <p>Date Début : <%= rent.date_debut || "Non définie" %></p>
+              <p>Date Fin : <%= rent.date_fin || "Non définie" %></p>
+
+              <% if rent.statut == "En attente" %>
+                <%= button_to "Accepter", accept_rent_path(rent), method: :patch, class: "btn btn-success btn-sm" %>
+                <%= button_to "Rejeter", reject_rent_path(rent), method: :patch, class: "btn btn-danger btn-sm" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucune demande de réservation pour le moment.</p>
       <% end %>
     </ul>
 </div>

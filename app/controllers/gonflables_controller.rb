@@ -3,7 +3,7 @@ class GonflablesController < ApplicationController
 
   def index
     @gonflables = Gonflable.all
-    @gonflable = Gonflable.new
+    # @gonflables = Gonflable.order(created_at: :desc).page(params[:page])
   end
 
   def show
