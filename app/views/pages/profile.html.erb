@@ -1,4 +1,5 @@
 <div class="container">
+  
   <p><%= @user.avatar %></p>
   <h1>Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
 </div>
@@ -35,11 +36,13 @@
               <button>Supprimer</button>
             <% end %>
             </div>
-          </div>
-        <% end %>
-      <% else %>
-        <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
       <% end %>
+    <% else %>
+      <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
+    <% end %>
+  <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+  </ul>
+</div>
       <div data-controller="toggle" class="mt-5">
         <button data-action="click->toggle#fire" class="btn btn-outline-primary">Ajouter un gonflable</button>
           <div data-toggle-target="togglableElement" class="d-none">
