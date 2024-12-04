@@ -3,6 +3,7 @@ class GonflablesController < ApplicationController
 
   def index
     @gonflables = Gonflable.all
+    @gonflable = Gonflable.new
   end
 
   def show

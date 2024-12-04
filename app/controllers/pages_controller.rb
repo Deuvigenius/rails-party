@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @gonflables = current_user.gonflables
     @rents = Rent.where(user: @user)
     @gonflables = @user.gonflables
+    @gonflable = Gonflable.new
   end
 end
