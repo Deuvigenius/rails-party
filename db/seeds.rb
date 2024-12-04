@@ -97,3 +97,19 @@ gonflable1 = Gonflable.all[18].photo.attach(io: file_gonflable_19, filename: "go
 
 file_gonflable_20 = URI.parse("https://m.media-amazon.com/images/I/A16xP2uEPHL.jpg").open
 gonflable1 = Gonflable.all[19].photo.attach(io: file_gonflable_20, filename: "gonflable-20", content_type: "image/jpg")
+
+
+
+
+
+
+
+# <div class="container">
+#   <%= simple_form_for(@gonflable) do |f| %>
+#     <%= f.input :name %>
+#     <%= f.input :content %>
+#     <%= f.input :price %>
+#     <%= f.input :photo, as: :file %>
+#     <%= f.button :submit %>
+#   <% end %>
+# </div>

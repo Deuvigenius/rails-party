@@ -14,6 +14,7 @@ class GonflablesController < ApplicationController
   end
 
   def edit
+    @gonflable = Gonflable.find(params[:id])
   end
 
   def create
