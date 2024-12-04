@@ -4,23 +4,19 @@
   <%= paginate @gonflables %>
 </div>
 
-<div class="container-sm mt-5">
 <h1 class="text-primary text-center pb-5 pt-3"><strong>Chateaux gonflables</strong></h1>
 
-
-<div class="card-category">
-  <% @gonflables.each do |gonflable| %>
-    <% if gonflable.photo.attached? %>
-      <div class="card" style="background-image: url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
-        <%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %>
-      </div>
-    <% else %>
-      <div class="card" style="background-image: url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
-        <%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %>
-      </div>
-    <% end %>
-  <% end %>
-  </div>
-
-
-</div>
+  <div class="custom-card-container">
+    <% @gonflables.each do |gonflable| %>
+      <div class="custom-card">
+        <% if gonflable.photo.attached? %>
+        <svg class="card" style="background-image: url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')"> 
+        </svg>
+      <% else %>
+        <svg class="card" style="background-image: url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">  
+        </svg>
+      <% end %>
+        <div class="custom-card-content">
+          <p class="custom-card-title"><%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %></p>
+          <p class="card-description"><%= gonflable.content %></p>
+        </div>
