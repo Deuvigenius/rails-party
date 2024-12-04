@@ -19,7 +19,11 @@
       </div>
     </div>
   <hr>
-  <div>
+
+  <div data-controller="toggle-rent" class="mt-5">
+
+      <button data-action="click->toggle-rent#fire">Louer</button>
+      <div data-toggle-rent-target="togglableElement" class="d-none">
       <%= simple_form_for [@gonflable, @rent] do |f| %>
         <%= f.error_notification %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -31,9 +35,10 @@
           <%= f.date_field :date_fin, class: "form-control" %>
         </div>
 
-        <%= f.button :submit %>
-        
+        <%= f.button :submit, "Valider la réservation" %>
+
       <% end %>
+      </div>
   </div>
     <%= link_to "Retour aux gonflables", gonflables_path(@gonflables) %>
 </div>

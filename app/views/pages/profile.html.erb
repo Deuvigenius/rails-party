@@ -35,9 +35,14 @@
       <% else %>
         <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
       <% end %>
-      <%= link_to "Ajouter un gonflable", new_gonflable_path %>
+      <div data-controller="toggle" class="mt-5">
+        <button data-action="click->toggle#fire" class="btn btn-outline-primary">Ajouter un gonflable</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+          <%= render "form", gonflable: @gonflable %>
+          </div>
+      </div>
     </ul>
- 
+
 
   <h2 class="my-4">Mes Réservations</h2>
     <table class="table table-hover align-middle">
@@ -105,68 +110,6 @@
         <% else %>
           <tr colspan="6" class="text-center">
             <td>Aucune demande de réservation pour le moment.</p>
-          </tr>
-        <% end %>
-      </tbody> 
-    </table>
-
-
-  <h2 class="my-4">Mes Demandes de Réservations</h2>
-    <ul class="list-group">
-      <% if @requests.any? %>
-        <% @requests.each do |rent| %>
-          <div class="card-product">
-            <div class="card-product-infos">
-              <li><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></li>
-              <p>Réservé par : <%= rent.user.first_name %> <%= rent.user.last_name %></p>
-              <p class="text-muted">Statut : <%= rent.statut || "En attente" %></p>
-              <p>Date Début : <%= rent.date_debut || "Non définie" %></p>
-              <p>Date Fin : <%= rent.date_fin || "Non définie" %></p>
-
-              <% if rent.statut == "En attente" %>
-                <%= button_to "Accepter", accept_rent_path(rent), method: :patch, class: "btn btn-success btn-sm" %>
-                <%= button_to "Rejeter", reject_rent_path(rent), method: :patch, class: "btn btn-danger btn-sm" %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p>Aucune demande de réservation pour le moment.</p>
-      <% end %>
-    </ul>
-</div>
-
-
-
-  <h2 class="my-4">Mes Réservations</h2>
-    <table class="table table-hover align-middle">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nom gonflable</th>
-          <th scope="col">Debut de début</th>
-          <th scope="col">Date de fin</th>
-          <th scope="col">Statut</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <% if @my_rents.any? %>
-          <% @my_rents.each_with_index do |rent, index| %>
-            <tr>
-              <th scope="row"><%= index + 1 %></th>
-              <td><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></td>
-              <td><%= rent.date_debut || "Non définie" %></th>
-              <td><%= rent.date_fin || "Non définie" %></th>
-              <td class="text-muted"><%= rent.statut || "En attente" %></td>
-              <td><%= link_to rent_path(rent), data: { turbo_method: :delete }, method: :delete, class: "btn btn-danger" do %>
-                  Supprimer
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        <% else %>
-          <tr colspan="6" class="text-center">
-            <td>Aucune réservation pour le moment.</p>
           </tr>
         <% end %>
       </tbody> 
