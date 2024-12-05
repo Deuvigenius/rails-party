@@ -1,9 +1,12 @@
+
+
+
 <div class="container-sm mt-5">
 
   <h1 class="text-primary text-center pb-3"><strong>Château gonflable</strong></h1>
   <hr>
 
-  <!-- Section avec l'image et les informations du gonflable -->
+
   <div class="d-flex p-3 align-items-center">
     <div class="img_gonflable flex-shrink-0">
       <% if @gonflable.photo.attached? %>
@@ -15,12 +18,14 @@
     <div class="info_gonflable flex-grow-1 ms-5">
       <h2 class="text-danger"><strong><%= @gonflable.name %></strong></h2>
       <p><strong><%= @gonflable.content %></strong></p>
+
       <p><%= @gonflable.address %></p>
       <p><strong>Note : <%= @gonflable.rating %>/10</strong></p>
+
       <p><strong>Prix : <%= @gonflable.price %> €</strong></p>
     </div>
 
-    <!-- Formulaire pour louer -->
+
     <div data-controller="toggle-rent" class="mt-5">
       <button data-action="click->toggle-rent#fire" class="button-rent"><span>Louer</span></button>
       <div data-toggle-rent-target="togglableElement" class="d-none">
@@ -39,7 +44,7 @@
   </div>
   <hr>
 
-  <!-- Section des avis -->
+
   <div class="reviews-section">
     <h2 class="text-secondary">Avis des utilisateurs</h2>
 
