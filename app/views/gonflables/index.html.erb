@@ -20,11 +20,11 @@
       </div>
     <% end %>
   </div>
-  <div class="map-section" id="map"
+  <div class="map-section"
     data-controller="map"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-map-markers-value="<%= @markers.to_json %>"
-    style="height: 200px; width: 100%;">
+    style="height: 100vh; width: 100%;">
   </div>
 </div>
 

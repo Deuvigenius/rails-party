@@ -2,7 +2,6 @@ class GonflablesController < ApplicationController
   before_action :set_gonflable, only: %i[ show edit update destroy ]
 
   def index
-    @gonflables = Gonflable.all
     @gonflables = Gonflable.geocoded
     @markers = @gonflables.map do |gonflable|
       {

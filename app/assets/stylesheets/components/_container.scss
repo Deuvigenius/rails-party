@@ -3,22 +3,18 @@
   flex-wrap: wrap; /* Assure que les colonnes s'empilent sur petits écrans */
   margin: 0;
   padding: 0;
+  position: sticky;
+  top: 15px;
 }
 
 /* Section de la carte : occupe 1/3 de la largeur */
 .map-section {
-  flex: 1; /* 1 part sur 3 */
-  position: sticky;
-  top: 0;
+  flex: 1;
+  top: 15px;
   height: 100vh;
   background-color: #e9ecef; /* Couleur de fond pour voir la zone */
 }
 
-#map {
-  width: 100%; /* Carte occupe toute la largeur */
-  height: 100%; /* Carte occupe toute la hauteur */
-  border-radius: 10px; /* Coins arrondis pour un style cohérent */
-}
 
 /* Responsiveness pour petits écrans */
 @media (max-width: 768px) {
