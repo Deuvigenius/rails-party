@@ -1,9 +1,9 @@
 <div class="container-sm mt-5 ">
 
-  <h1 class="text-primary"><strong>Inflatables games</strong></h1>
+  <h1 class="text-primary text-center pb-3"><strong>Chateau gonflable</strong></h1>
 
-    <p><strong><%= @gonflable.name %></strong></p>
     <hr>
+
   <div class="d-flex p-3 align-items-center">
       <div class="img_gonflable flex-shrink-0">
           <% if @gonflable.photo.attached? %>
@@ -13,20 +13,19 @@
           <% end %>
       </div>
       <div class="info_gonflable flex-grow-1 ms-5">
+          <h2 class="text-danger"><strong><%= @gonflable.name %></strong></h2>
           <p><strong><%= @gonflable.content %></strong></p>
           <p><strong><%= @gonflable.rating %>/10</strong></p>
           <p><strong><%= @gonflable.price %></strong></p>
       </div>
-    </div>
-  <hr>
 
-  <div data-controller="toggle-rent" class="mt-5">
+    <div data-controller="toggle-rent" class="mt-5">
 
-      <button data-action="click->toggle-rent#fire">Louer</button>
+      <button data-action="click->toggle-rent#fire" class="button-rent"><span>Louer</span></button>
       <div data-toggle-rent-target="togglableElement" class="d-none">
-      <%= simple_form_for [@gonflable, @rent] do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= simple_form_for [@gonflable, @rent] do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
         <div class="form-inputs">
           <%= f.label :date_debut, "Date de début" %>
@@ -37,8 +36,15 @@
 
         <%= f.button :submit, "Valider la réservation" %>
 
-      <% end %>
+        <% end %>
       </div>
+    </div>
   </div>
-    <%= link_to "Retour aux gonflables", gonflables_path(@gonflables) %>
+  <hr>
+
+        <div class="pt-2">
+          <%= link_to gonflables_path(@gonflables) do %>
+          <button class="btn1">Retour aux gonflables</button>
+          <% end %>
+        </div>
 </div>
