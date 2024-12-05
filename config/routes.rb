@@ -16,10 +16,10 @@ Rails.application.routes.draw do
 
   resources :gonflables do
     resources :rents, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   resources :rents, only: [:destroy]
-
 
   resources :rents do
     member do
