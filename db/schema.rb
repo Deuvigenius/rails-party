@@ -51,6 +51,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_05_100240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_gonflables_on_user_id"
   end
 
