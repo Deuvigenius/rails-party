@@ -1,50 +1,72 @@
-<div class="container-sm mt-5 ">
+<div class="container-sm mt-5">
 
-  <h1 class="text-primary text-center pb-3"><strong>Chateau gonflable</strong></h1>
+  <h1 class="text-primary text-center pb-3"><strong>Château gonflable</strong></h1>
+  <hr>
 
-    <hr>
-
+  <!-- Section avec l'image et les informations du gonflable -->
   <div class="d-flex p-3 align-items-center">
-      <div class="img_gonflable flex-shrink-0">
-          <% if @gonflable.photo.attached? %>
-            <%= cl_image_tag @gonflable.photo.key, height: 300, width: 300, crop: :fill %>
-          <% else %>
-            <img src="https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948" width="250" height="250"alt="Gonflable pleins de couleurs">
-          <% end %>
-      </div>
-      <div class="info_gonflable flex-grow-1 ms-5">
-          <h2 class="text-danger"><strong><%= @gonflable.name %></strong></h2>
-          <p><strong><%= @gonflable.content %></strong></p>
-          <p><strong><%= @gonflable.rating %>/10</strong></p>
-          <p><strong><%= @gonflable.price %></strong></p>
-      </div>
+    <div class="img_gonflable flex-shrink-0">
+      <% if @gonflable.photo.attached? %>
+        <%= cl_image_tag @gonflable.photo.key, height: 300, width: 300, crop: :fill %>
+      <% else %>
+        <img src="https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948" width="250" height="250" alt="Gonflable pleins de couleurs">
+      <% end %>
+    </div>
+    <div class="info_gonflable flex-grow-1 ms-5">
+      <h2 class="text-danger"><strong><%= @gonflable.name %></strong></h2>
+      <p><strong><%= @gonflable.content %></strong></p>
+      <p><strong>Note : <%= @gonflable.rating %>/10</strong></p>
+      <p><strong>Prix : <%= @gonflable.price %> €</strong></p>
+    </div>
 
+    <!-- Formulaire pour louer -->
     <div data-controller="toggle-rent" class="mt-5">
-
       <button data-action="click->toggle-rent#fire" class="button-rent"><span>Louer</span></button>
       <div data-toggle-rent-target="togglableElement" class="d-none">
         <%= simple_form_for [@gonflable, @rent] do |f| %>
           <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-        <div class="form-inputs">
-          <%= f.label :date_debut, "Date de début" %>
-          <%= f.date_field :date_debut, class: "form-control" %>
-          <%= f.label :date_fin, "Date de fin" %>
-          <%= f.date_field :date_fin, class: "form-control" %>
-        </div>
-
-        <%= f.button :submit, "Valider la réservation" %>
-
+          <div class="form-inputs">
+            <%= f.label :date_debut, "Date de début" %>
+            <%= f.date_field :date_debut, class: "form-control" %>
+            <%= f.label :date_fin, "Date de fin" %>
+            <%= f.date_field :date_fin, class: "form-control" %>
+          </div>
+          <%= f.button :submit, "Valider la réservation", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
   </div>
   <hr>
 
-        <div class="pt-2">
-          <%= link_to gonflables_path(@gonflables) do %>
-          <button class="btn1">Retour aux gonflables</button>
-          <% end %>
-        </div>
+  <!-- Section des avis -->
+  <div class="reviews-section">
+    <h2 class="text-secondary">Avis des utilisateurs</h2>
+
+    <% if @gonflable.reviews.any? %>
+      <div class="reviews-list">
+        <% @gonflable.reviews.each do |review| %>
+          <div class="review-item border p-3 mb-3">
+            <p><strong><%= review.user.email %></strong></p>
+            <p>Note : <%= review.rating %>/5</p>
+            <p><%= review.content %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Aucun avis pour l'instant. Soyez le premier à en laisser un !</p>
+    <% end %>
+
+    <!-- Lien pour ajouter un avis -->
+    <%= link_to "Donner un avis", new_gonflable_review_path(@gonflable), class: "btn btn-secondary mt-3" %>
+  </div>
+
+  <hr>
+
+  <!-- Bouton pour retourner à la liste des gonflables -->
+  <div class="pt-2">
+    <%= link_to gonflables_path(@gonflables) do %>
+      <button class="btn1">Retour aux gonflables</button>
+    <% end %>
+  </div>
+
 </div>

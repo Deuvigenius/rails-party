@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :rents, dependent: :destroy
   has_many :gonflables, dependent: :destroy
-
+  has_many :reviews
   has_one_attached :photo
+
 end
