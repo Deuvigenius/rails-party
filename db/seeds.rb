@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require "open-uri"
+require "faker"
 
 User.destroy_all
 Gonflable.destroy_all
@@ -30,8 +31,10 @@ user_id = users.map do |user|
   user.id
 end
 
+address = ["14 Rue Sainte, 13001 Marseille", "12 Rue Marguerite Desnuelle, 13010 Marseille", "30 Avenue de la Capelette, 13010 Marseille", "200 Avenue du Prado, 13008 Marseille", "100 Boulevard Michelet, 13008 Marseille", "10 Rue Bouronne, 13600 La Ciotat", "40 Avenue Jules Ferry, 13600 La Ciotat", "50 Boulevard de Louvain, 13008 Marseille"]
+
 20.times do
-  Gonflable.create!(name: Faker::Name.name, content: Faker::Lorem.paragraph, price: rand(100..500), user_id: user_id.sample)
+  Gonflable.create!(name: Faker::Name.name, content: Faker::Lorem.paragraph, price: rand(100..500), user_id: user_id.sample, address: address.sample)
 end
 
 puts "#{Gonflable.count} Inflatable games are created"
@@ -99,17 +102,3 @@ file_gonflable_20 = URI.parse("https://m.media-amazon.com/images/I/A16xP2uEPHL.j
 gonflable1 = Gonflable.all[19].photo.attach(io: file_gonflable_20, filename: "gonflable-20", content_type: "image/jpg")
 
 
-
-
-
-
-
-# <div class="container">
-#   <%= simple_form_for(@gonflable) do |f| %>
-#     <%= f.input :name %>
-#     <%= f.input :content %>
-#     <%= f.input :price %>
-#     <%= f.input :photo, as: :file %>
-#     <%= f.button :submit %>
-#   <% end %>
-# </div>
