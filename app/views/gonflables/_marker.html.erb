@@ -1,3 +1,9 @@
-<div class="badge rounded-pill bg-primary fs-6">
-  <%= gonflable.name %>
-</div>
+<% if gonflable.photo.attached? %>
+  <div class="custom-marker">
+    <%= cl_image_tag gonflable.photo.key %>
+  </div>
+  <% else %>
+  <div class="custom-marker">
+      <img src="https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948cus" alt="">
+  </div>
+<% end %>
