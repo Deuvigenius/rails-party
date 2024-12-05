@@ -14,7 +14,9 @@ class GonflablesController < ApplicationController
   end
 
   def show
+    @gonflables = Gonflable.find(params[:id])
     @rent = Rent.new
+    @reviews = @gonflable.reviews
   end
 
   def new
