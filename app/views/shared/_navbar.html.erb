@@ -12,12 +12,19 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+             <% if current_user.photo.attached? %>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+            </a>
+          <% else %>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-vector-600nw-1725655669.jpg" alt="avatar-par-défaut" class="avatar">
+            </a>
+          <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a href="/profile" class="dropdown-item">Profile</a>
-              <a href="/users/sign_out" class="dropdown-item">Log out</a>
+              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
         <% else %>
