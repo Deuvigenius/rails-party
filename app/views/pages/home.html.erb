@@ -1,5 +1,53 @@
   <!-- Section principale (Hero) -->
-  <div class="hero">
-    <h1>Louez un château gonflable<br>en toute simplicité !</h1>
-    <a href="/gonflables" class="btn">Louer un gonflable</a>
+<div class="hero">
+  <h1>Bienvenue sur notre site de location</h1>
+  <p>Découvrez nos châteaux gonflables pour tous vos événements !</p>
+</div>
+
+<div class="video-section">
+   <%= video_tag "background.mp4", autoplay: :autoplay, loop: :loop, muted: :muted %>
+</div>
+
+<div class="call-to-action">
+  <h2>Réservez maintenant !</h2>
+  <%= link_to "Voir nos produits", gonflables_path, class: "btn" %>
+</div>
+
+
+<div class="collection">
+
+</div>
+
+<div class="service">
+  <div class="card-icon">
+    <div class="card-inner-icon">
+      <div class="card-front-icon">
+        <i class="fa-solid fa-truck"></i>
+      </div>
+      <div class="card-back-icon">
+        <p>Livraison et installation incluses</p>
+      </div>
+    </div>
   </div>
+  <div class="card-icon">
+    <div class="card-inner-icon">
+      <div class="card-front-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <div class="card-back-icon">
+        <p>Nettoyage et désinfection après chaque location</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-icon">
+    <div class="card-inner-icon">
+      <div class="card-front-icon">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="card-back-icon">
+        <p>Assistance 7j/7</p>
+      </div>
+    </div>
+  </div>
+
+</div>

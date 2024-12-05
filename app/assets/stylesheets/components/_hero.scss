@@ -1,13 +1,64 @@
-.hero {
-  height: calc(100vh - 60px);
+// .hero {
+//   height: calc(100vh - 60px);
+//   position: relative;
+//   height: 100vh;
+//   background: url('https://images.pexels.com/photos/296308/pexels-photo-296308.jpeg') no-repeat center center/cover;
+//   background-size: cover;
+//   color: white;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+// }
+
+.video-section {
   position: relative;
-  height: 100vh;
-  background: url('https://images.pexels.com/photos/296308/pexels-photo-296308.jpeg') no-repeat center center/cover;
-  background-size: cover;
-  color: white;
+  width: 100%; /* La largeur peut être ajustée */
+  height: 600px; /* Définissez une hauteur spécifique pour la section vidéo */
+  overflow: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #000; /* Couleur de fond pour les bordures éventuelles */
+}
+
+.video-section iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover; /* Assure que la vidéo remplit bien la section */
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 10px;
+
+}
+.hero {
   text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.call-to-action {
+  text-align: center;
+  padding: 20px;
+}
+
+.call-to-action .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.call-to-action .btn:hover {
+  background-color: #0056b3;
 }

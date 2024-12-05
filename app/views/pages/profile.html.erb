@@ -68,8 +68,8 @@
             <tr>
               <th scope="row"><%= index + 1 %></th>
               <td><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></td>
-              <td><%= rent.date_debut || "Non définie" %></th>
-              <td><%= rent.date_fin || "Non définie" %></th>
+              <td><%= rent.date_debut || "Non définie" %></td>
+              <td><%= rent.date_fin || "Non définie" %></td>
               <td class="text-muted"><%= rent.statut || "En attente" %></td>
               <td><%= link_to rent_path(rent), data: { turbo_method: :delete }, method: :delete, class: "btn btn-danger" do %>
                   Supprimer
@@ -78,8 +78,8 @@
             </tr>
           <% end %>
         <% else %>
-          <tr colspan="6" class="text-center">
-            <td>Aucune réservation pour le moment.</p>
+          <tr>
+            <td colspan="6" class="text-center">Aucune réservation pour le moment.</td>
           </tr>
         <% end %>
       </tbody>
@@ -106,8 +106,8 @@
               <th scope="row"><%= index + 1 %></th>
               <td><strong><%= link_to rent.gonflable.name, gonflable_path(rent.gonflable) %></strong></td>
               <td><%= rent.user.first_name %> <%= rent.user.last_name %></td>
-              <td><%= rent.date_debut || "Non définie" %></th>
-              <td><%= rent.date_fin || "Non définie" %></th>
+              <td><%= rent.date_debut || "Non définie" %></td>
+              <td><%= rent.date_fin || "Non définie" %></td>
               <td>
                 <% if rent.statut == "En attente" %>
                   <%= button_to "Accepter", accept_rent_path(rent), method: :patch, class: "btn btn-success btn-sm" %>
@@ -117,8 +117,8 @@
             </tr>
           <% end %>
         <% else %>
-          <tr colspan="6" class="text-center">
-            <td>Aucune demande de réservation pour le moment.</p>
+          <tr>
+            <td colspan="6" class="text-center">Aucune demande de réservation pour le moment.</td>
           </tr>
         <% end %>
       </tbody>
