@@ -1,54 +1,61 @@
 <div class="container profile">
-  <h1 class="titre1">Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
+  <h1 class="titre1">Bonjour <%= @user.first_name %> <%= @user.last_name %></h1>
 </div>
 
-<div class="container mt-5">
-  <h2 class="titre2">Mes gonflables en location</h2>
-  <hr>
-    <ul class="list-group">
-      <% if @gonflables.present? %>
-        <% @gonflables.each do |gonflable| %>
-          <div class="card-product">
-            <div class="card-product-infos">
-              <h2>
-                <strong>
-                  <%= link_to gonflable.name, gonflable_path(gonflable), class: "link1" %>
-                </strong>
-              </h2>
-                <div class="container-card">
-                  <% if gonflable.photo.attached? %>
-                    <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
-                      <%= link_to edit_gonflable_path(gonflable) do %>
+  <div class="container mt-5">
+    <h2 class="titre2">Mes gonflables en location</h2>
+    <hr>
+
+    <div class="card-category2">
+      <div class="list-group">
+        <% if @gonflables.present? %>
+          <% @gonflables.each do |gonflable| %>
+            <div class="card-product">
+              <div class="card-product-infos">
+                <h2>
+                  <strong>
+                    <%= link_to gonflable.name, gonflable_path(gonflable), class: "link1" %>
+                  </strong>
+                </h2>
+                  <div class="container-card">
+                    <% if gonflable.photo.attached? %>
+                      <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
+                        <%= link_to edit_gonflable_path(gonflable) do %>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
+                        <%= link_to edit_gonflable_path(gonflable) do %>
                           <i class="fa-regular fa-pen-to-square"></i>
-                      <% end %>
-                    </div>
-                  <% else %>
-                    <div class="card-style" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
-                      <%= link_to edit_gonflable_path(gonflable) do %>
-                        <i class="fa-regular fa-pen-to-square"></i>
-                      <% end %>
-                    </div>
-                  <% end %></p>
-                </div>
-              <p class="price1">Prix : <%= gonflable.price %>€</p>
-            <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
-              <button class="supprimer">Supprimer</button>
-            <% end %>
-            <hr>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                    <p class="price1">Prix : <%= gonflable.price %>€</p>
+                    <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
+                      <button class="btn-supprimer">Supprimer</button>
+                     <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      <% else %>
-        <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
-      <% end %>
+            <% end %>
+            <% else %>
+              <li class="list-group-item">Vous n'avez pas encore ajouté de gonflables.</li>
+            <% end %>
+      </div>
+
+    </div>
+      <hr>
+  </div>
+
+  <div class="container mt-5">
       <div data-controller="toggle" class="mt-5">
-        <button data-action="click->toggle#fire" class="ajouter">Ajouter un gonflable</button>
+        <button data-action="click->toggle#fire" class="btn">Ajouter un gonflable</button>
           <div data-toggle-target="togglableElement" class="d-none">
           <%= render "form", gonflable: @gonflable %>
           </div>
       </div>
-    </ul>
-</div>
+  </div>
 
 <div class="container mt-5">
   <h2 class="my-4">Mes Réservations</h2>

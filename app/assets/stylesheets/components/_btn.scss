@@ -2,8 +2,8 @@
   margin-top: 20px;
   display: inline-block;
   padding: 10px 20px;
-  background: #fcb900;
-  color: black;
+  background: #1E2A5E;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
   font-size: 1rem;
@@ -12,143 +12,43 @@
 }
 
 .btn:hover {
-  background: #e4a02b;
+  background: #55679C;
+  color: white;
 }
 
-.button-rent {
-
-  position: relative;
+.btn-valider {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #55679C;
+  color: white;
   text-decoration: none;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  line-height: 48px;
-  width: 160px;
-  cursor: pointer;
-  font-weight: bold;
-  height: 55px;
-  -webkit-box-reflect: bottom 1px linear-gradient(transparent, #0004);
-}
-
-.button-rent span {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 4px;
-  right: 4px;
-  bottom: 4px;
-  left: 4px;
-  text-align: center;
-  background: #2e2e2e;
-  color: rgba(255, 255, 255, 0.781);
-  transition: 0.5s;
-  z-index: 1;
-}
-
-.button-rent:hover span {
-  color: rgba(255, 255, 255, 1);
-}
-
-.button-rent::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: 400%;
-  opacity: 0;
-  transition: 0.5s;
-  background: linear-gradient(
-    45deg,
-    #91155d,
-    #525296,
-    #0f0,
-    #ff0,
-    #fb0094,
-    #00f,
-    #0f0,
-    #ff0
-  );
-  animation: animate123 20% linear infinte;
-}
-
-.button-rent::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: 400%;
-  filter: blur(20px);
-  transition: 0.5s;
-  background: linear-gradient(
-    45deg,
-    #91155d,
-    #525296,
-    #0f0,
-    #ff0,
-    #fb0094,
-    #00f,
-    #0f0,
-    #ff0
-  );
-  animation: animate123 20% linear infinte;
-}
-
-.button-rent:hover::before,
-.button-rent:hover::after {
-  opacity: 1;
-}
-
-@keyframes animate123 {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 300% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.button-rent span::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.btn1 {
-  --bg: #252322;
-  --text-color: #fff;
-  position: relative;
-  width: 300px;
-  border: none;
-  background: var(--bg);
-  color: var(--text-color);
-  padding: 1em;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: 0.2s;
   border-radius: 5px;
-  opacity: 0.8;
-  letter-spacing: 1px;
-  box-shadow: #6b6a69 0px 7px 2px, #000 0px 8px 5px;
+  font-size: 1rem;
+  cursor:pointer;
+  text-align: center;
+  border: none;
 }
 
-.btn1:hover {
-  opacity: 1;
+.btn-valider:hover {
+  background: #1E2A5E;
+  color: white;
 }
 
-.btn1:active {
-  top: 4px;
-  box-shadow: #6b6a69 0px 3px 2px,#000 0px 3px 5px;
+.btn-supprimer {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #C7253E;
+  border: none;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor:pointer;
+  text-align: center;
+}
+
+.btn-supprimer:hover {
+  background: #821131;
 }
