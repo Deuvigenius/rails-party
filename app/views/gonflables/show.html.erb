@@ -16,18 +16,18 @@
       <% end %>
     </div>
     <div class="info_gonflable flex-grow-1 ms-5">
-      <h2 class="text-danger"><strong><%= @gonflable.name %></strong></h2>
+      <h2 class="h2-show"><strong><%= @gonflable.name %></strong></h2>
       <p><strong><%= @gonflable.content %></strong></p>
 
       <p><%= @gonflable.address %></p>
-      <p><strong>Note : <%= @gonflable.rating %>/10</strong></p>
+      <p class="show"><strong>Note : <%= @gonflable.rating %>/10</strong></p>
 
-      <p><strong>Prix : <%= @gonflable.price %> €</strong></p>
+      <p class="show"><strong>Prix : <%= @gonflable.price %> €</strong></p>
     </div>
 
 
     <div data-controller="toggle-rent" class="mt-5">
-      <button data-action="click->toggle-rent#fire" class="button-rent"><span>Louer</span></button>
+      <button data-action="click->toggle-rent#fire" class="btn"><span>Louer</span></button>
       <div data-toggle-rent-target="togglableElement" class="d-none">
         <%= simple_form_for [@gonflable, @rent] do |f| %>
           <%= f.error_notification %>
@@ -37,7 +37,7 @@
             <%= f.label :date_fin, "Date de fin" %>
             <%= f.date_field :date_fin, class: "form-control" %>
           </div>
-          <%= f.button :submit, "Valider la réservation", class: "btn btn-primary" %>
+          <%= f.button :submit, "Valider", class: "btn-valider" %>
         <% end %>
       </div>
     </div>
@@ -71,7 +71,7 @@
   <!-- Bouton pour retourner à la liste des gonflables -->
   <div class="pt-2">
     <%= link_to gonflables_path(@gonflables) do %>
-      <button class="btn1">Retour aux gonflables</button>
+      <button class="btn">Retour aux gonflables</button>
     <% end %>
   </div>
 
