@@ -52,7 +52,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  color: #64ffda;
+  color: white;
   font-weight: bold;
   outline: 1px solid $color3;
   transition: all ease-in-out 0.3s;
@@ -60,7 +60,7 @@
 
 .sendMessage-btn:hover {
   transition: all ease-in-out 0.3s;
-  background-color: #64ffda;
+  background-color: $color3;
   color: #000;
   cursor: pointer;
   box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
@@ -74,7 +74,7 @@
 }
 
 .form-card1:hover {
-  box-shadow: 0px 0px 30px 1px rgba(100, 255, 218, 0.3);
+  box-shadow: 0px 0px 30px 1px $color3;
 }
 
 .form-card2 {

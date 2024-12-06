@@ -5,7 +5,7 @@
     <% @gonflables.each do |gonflable| %>
       <div class="custom-card">
         <% if gonflable.photo.attached? %>
-          <svg class="card" style="background-image: url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
+          <svg class="custom-card" style="background-image: url('<%= cl_image_path gonflable.photo.key, height: 300, crop: :fill %>')">
           </svg>
         <% else %>
           <svg class="card" style="background-image: url('https://cdn.shopify.com/s/files/1/1797/8719/products/BeBop-8-en-1-Activite-gonflable-Chateau-gonflable.JPG?v=1551973948')">
@@ -13,7 +13,7 @@
         <% end %>
         <div class="custom-card-content">
           <p class="custom-card-title"><%= link_to gonflable.name, gonflable_path(gonflable), class: "link" %></p>
-          <p class="card-description"><%= gonflable.content %></p>
+          <p class="custom-card-description"><%= gonflable.content %></p>
         </div>
       </div>
     <% end %>
