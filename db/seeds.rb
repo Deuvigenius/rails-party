@@ -44,7 +44,7 @@ end
 address = ["14 Rue Sainte, 13001 Marseille", "12 Rue Marguerite Desnuelle, 13010 Marseille", "30 Avenue de la Capelette, 13010 Marseille", "200 Avenue du Prado, 13008 Marseille", "100 Boulevard Michelet, 13008 Marseille", "10 Rue Bouronne, 13600 La Ciotat", "40 Avenue Jules Ferry, 13600 La Ciotat", "50 Boulevard de Louvain, 13008 Marseille"]
 
 50.times do
-  Gonflable.create!(name: Faker::Name.name, content: Faker::Lorem.paragraph, price: rand(100..500), user_id: user_id.sample, address: address.sample)
+  Gonflable.create!(name: Faker::Name.name, content: Faker::Lorem.paragraph, rating: rand(0.0..5.0), price: rand(100..500), user_id: user_id.sample, address: address.sample)
 end
 
 puts "#{Gonflable.count} Inflatable games are created"
