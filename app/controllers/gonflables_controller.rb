@@ -30,16 +30,20 @@ class GonflablesController < ApplicationController
   def create
     @gonflable = Gonflable.new(gonflable_params)
     @gonflable.user = current_user
-    if @gonflable.save
-      redirect_to @gonflable, notice: "Inflatable games was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @gonflable.save
+        format.html { redirect_to @gonflable, notice: "Votre Gonflable est bien créé" }
+      else
+        format.html { redirect_to user_profile_path, notice: "Votre Gonflable n'a pas été créé" }
+      end
     end
   end
 
+
+
   def update
     if @gonflable.update(gonflable_params)
-      redirect_to @gonflable, notice: "Inflatable games was successfully updated."
+      redirect_to @gonflable, notice: "Votre Gonflable a été modifié."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -47,7 +51,7 @@ class GonflablesController < ApplicationController
 
   def destroy
     @gonflable.destroy
-    redirect_to @gonflable, notice: "Inflatable games was successfully destroyed."
+    redirect_to user_profile_path, notice: "Votre Gonflable a été supprimé avec succès."
   end
 
   private
