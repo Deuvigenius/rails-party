@@ -1,17 +1,19 @@
-  <!-- Section principale (Hero) -->
-<div class="hero">
+<!-- Section principale (Hero) -->
+
+<div class="hero bg-light">
   <h1>Bienvenue sur notre site de location</h1>
   <p>Découvrez nos châteaux gonflables pour tous vos événements !</p>
 </div>
 
 <div class="video-section">
-   <%= video_tag "background.mp4", autoplay: :autoplay, loop: :loop, muted: :muted %>
+   <%= video_tag "background.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "background-video" %>
+  <div class=" video-overlay">
+    <h2>Voir nos châteaux !</h2>
+    <%= link_to "Réserver dès maintenant", gonflables_path, class: "btn" %>
+  </div>
 </div>
 
-<div class="call-to-action">
-  <h2>Réservez maintenant !</h2>
-  <%= link_to "Voir nos produits", gonflables_path, class: "btn" %>
-</div>
+
 
 
 <div class="collection">
@@ -49,5 +51,54 @@
       </div>
     </div>
   </div>
+</div>
 
+<div class="contact-section">
+  <div class="form-card1">
+      <div class="form-card2">
+        <form class="form">
+          <p class="form-heading">Nous contacter</p>
+
+          <div class="form-field">
+            <input required="" placeholder="Nom" class="input-field" type="text" />
+          </div>
+
+
+</div>
+
+          <div class="form-field">
+            <input
+              required=""
+              placeholder="Email"
+              class="input-field"
+              type="email"
+            />
+          </div>
+
+          <div class="form-field">
+            <input
+              required=""
+              placeholder="Date de l'évènement"
+              class="input-field"
+              type="text"
+            />
+          </div>
+
+          <div class="form-field">
+            <textarea
+              required=""
+              placeholder="Décrivez-nous vos besoins"
+              cols="30"
+              rows="3"
+              class="input-field"
+            ></textarea>
+          </div>
+
+          <button class="sendMessage-btn">Envoyer</button>
+        </form>
+      </div>
+  </div>
+  <div class="gif-section">
+    <iframe src="https://giphy.com/embed/5UqO887uXeUo5oSv7t" width="271" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href=""></a></p>
+  </div>
 </div>
