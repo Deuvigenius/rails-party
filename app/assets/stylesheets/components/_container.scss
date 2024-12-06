@@ -1,8 +1,10 @@
 .page-container {
   display: flex; 
   width: 100%;
-  margin: 0;
-  padding: 0;
+  height: 80%;
+  margin: 0 auto;
+  margin-bottom: 0;
+  padding: 20px;
   position: sticky;
   top: 15px;
 }
@@ -31,7 +33,7 @@
   flex: 2;
   top: 15px;
   width: 25vh;
-  height: 100vh;
+  height: 80vh;
   background-color: #e9ecef; /* Couleur de fond pour voir la zone */
 }
 
