@@ -2,7 +2,7 @@ class GonflablesController < ApplicationController
   before_action :set_gonflable, only: %i[ show edit update destroy ]
 
   def index
-    @gonflables = Gonflable.geocoded
+    @gonflables = Gonflable.all
     @markers = @gonflables.map do |gonflable|
       {
         lat: gonflable.latitude,
@@ -33,13 +33,13 @@ class GonflablesController < ApplicationController
     respond_to do |format|
       if @gonflable.save
         format.html { redirect_to @gonflable, notice: "Votre Gonflable est bien créé" }
+        format.json
       else
         format.html { redirect_to user_profile_path, notice: "Votre Gonflable n'a pas été créé" }
+        format.json
       end
     end
   end
-
-
 
   def update
     if @gonflable.update(gonflable_params)
