@@ -3,7 +3,7 @@
 </div>
 
   <div class="container mt-5">
-    <h2 class="titre2">Mes gonflables en location</h2>
+    <h2>Mes gonflables en location</h2>
     <hr>
 
     <div class="card-category2">
@@ -32,7 +32,7 @@
                       </div>
                     <% end %>
                   </div>
-                    <p class="price1">Prix : <%= gonflable.price %>€</p>
+                    <p>Prix : <%= gonflable.price %>€</p>
                     <%= link_to gonflable_path(gonflable), data: {turbo_method: :delete} do %>
                       <button class="btn-supprimer">Supprimer</button>
                      <% end %>
