@@ -7,6 +7,25 @@
   top: 15px;
 }
 
+.contact-section {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+  align-items: center; /* Centre verticalement */
+  justify-content: space-between; /* Espace entre le formulaire et le GIF */
+  gap: 20px; /* Espacement entre les deux éléments */
+  padding: 20px; /* Espacement interne */
+  box-sizing: border-box; /* Inclut padding et border dans la largeur totale */
+}
+
+.gif-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 22px;
+  justify-content: center;
+}
+
 /* Section de la carte : occupe 1/3 de la largeur */
 .map-section {
   flex: 2;
@@ -16,12 +35,3 @@
   background-color: #e9ecef; /* Couleur de fond pour voir la zone */
 }
 
-
-// /* Responsiveness pour petits écrans */
-// @media (max-width: 768px) {
-//   .products-section,
-//   .map-section {
-//     flex: 1 0 100%; /* Chaque section occupe toute la largeur */
-//     height: 50%; /* Ajuste la hauteur pour occuper 50% chacune */
-//   }
-// }

@@ -19,6 +19,14 @@
   grid-gap: 10px;
 }
 
+.card-category-2 {
+  flex: 1; /* Prend tout l'espace disponible (sera réduit si le GIF a besoin de place) */
+  max-width: 60%; /* Évite que le formulaire soit trop large */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .link {
   text-decoration: none;
   color: white;
